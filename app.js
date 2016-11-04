@@ -28,8 +28,7 @@ function AlreadyBoughtShoppingController(ShoppingListCheckOffService){
 function ShoppingListCheckOffService(){
   var service = this;
   // List of shopping items to buy (local list)
-  //var items = [{name: "chocolate", quantity: 1},{name: "ham", quantity: 2},{name: "cookie", quantity: 10},{name: "cheese", quantity: 1},{name: "patatoes", quantity: 10}];
-  var items = [0,1,2,3,4];
+  var items = [{name: "chocolate", quantity: 1},{name: "ham", quantity: 2},{name: "cookie", quantity: 10},{name: "cheese", quantity: 1},{name: "patatoes", quantity: 10}];
    var tobuy_items = [];
   // list of bought items
   var bought_items = [];
@@ -43,11 +42,11 @@ function ShoppingListCheckOffService(){
       tobuy_items.push(items[i]);
     }
     return tobuy_items;
-  }
+  };
 
   service.mylenght = function(){
     return tobuy_items.lenght;
-  }
+  };
 
 }
 })();
