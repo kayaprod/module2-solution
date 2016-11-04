@@ -15,7 +15,8 @@ function ToBuyShoppingController(ShoppingListCheckOffService){
     //ToBuyController.lenght = ShoppingListCheckOffService.mylenght;
     //console.log("items to buy " +   ToBuyController.items);
     //console.log("items to buy ");
-    console.log("items lenght " +   ShoppingListCheckOffService.lenght);
+    console.log("items lenght " +   ShoppingListCheckOffService.mylenght);
+    ShoppingListCheckOffService.sayhello;
 }
 
 AlreadyBoughtShoppingController.$inject = ['ShoppingListCheckOffService'];
@@ -47,6 +48,11 @@ function ShoppingListCheckOffService(){
   service.mylenght = function(){
     return tobuy_items.lenght;
   };
+
+  service.sayhello = function(){
+    console.log("hello from service");
+  }
+
 
 }
 })();
