@@ -11,12 +11,17 @@ function ToBuyShoppingController(ShoppingListCheckOffService){
   var ToBuyController = this;
     // A faire
     // retrieve items
-    ToBuyController.items = ShoppingListCheckOffService.getItems;
+    ToBuyController.items = ShoppingListCheckOffService.getItems();
     //ToBuyController.lenght = ShoppingListCheckOffService.mylenght;
-    //console.log("items to buy " +   ToBuyController.items);
+    //console.log("items to buy  now " +   ShoppingListCheckOffService.getItems());
+    console.log("items to buy  name : " +   ToBuyController.items[2].name + " items to buy quantity :" + ToBuyController.items[2].quantity);
     //console.log("items to buy ");
-    console.log("items lenght " +   ShoppingListCheckOffService.mylenght);
-    ShoppingListCheckOffService.sayhello;
+    console.log("items lenght " +   ShoppingListCheckOffService.mylenght());
+    //ToBuyController.sayhello = ShoppingListCheckOffService.sayhello();
+    //remove item from list to buy
+    ToBuyController.removeItem = function(itemIndex){
+        ShoppingListCheckOffService.removeItem(itemIndex);
+    };
 }
 
 AlreadyBoughtShoppingController.$inject = ['ShoppingListCheckOffService'];
@@ -29,7 +34,9 @@ function AlreadyBoughtShoppingController(ShoppingListCheckOffService){
 function ShoppingListCheckOffService(){
   var service = this;
   // List of shopping items to buy (local list)
-  var items = [{name: "chocolate", quantity: 1},{name: "ham", quantity: 2},{name: "cookie", quantity: 10},{name: "cheese", quantity: 1},{name: "patatoes", quantity: 10}];
+  var items = [{name: "chocolate", quantity: 1},{name: "ham", quantity: 2},{name: "cookies", quantity: 10},{name: "cheese", quantity: 1},{name: "patatoes", quantity: 10}];
+  //var items = [0,1,2,3,4];
+  //List of items to buy
    var tobuy_items = [];
   // list of bought items
   var bought_items = [];
@@ -37,7 +44,7 @@ function ShoppingListCheckOffService(){
   //expose items to buy
   service.getItems = function(){
     var i ;
-    for(i=0; i< items.lenght;i++)
+    for(i=0; i< items.length;i++)
     {
       //console.log("items lenght " + items.lenght)
       tobuy_items.push(items[i]);
@@ -46,13 +53,15 @@ function ShoppingListCheckOffService(){
   };
 
   service.mylenght = function(){
-    return tobuy_items.lenght;
+    return tobuy_items.length;
   };
 
   service.sayhello = function(){
-    console.log("hello from service");
+    console.log("hello from service !");
+  };
+   // Remove item of list to buy
+  service.removeItem = function (itemIdex){
+    tobuy_items.splice(itemIdex, 1);
   }
-
-
 }
 })();
