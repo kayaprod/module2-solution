@@ -28,7 +28,9 @@ AlreadyBoughtShoppingController.$inject = ['ShoppingListCheckOffService'];
 function AlreadyBoughtShoppingController(ShoppingListCheckOffService){
   var AlreadyBoughtController = this;
     // A faire
-
+    AlreadyBoughtController.items = ShoppingListCheckOffService.getListBought();
+  //  console.log("items bought  name : " +   AlreadyBoughtController.items[0].name + " items bought quantity :" + AlreadyBoughtController.items[0].quantity);
+      console.log(" length of AlreadyBoughtController : " + AlreadyBoughtController.items.length);
 }
  // service
 function ShoppingListCheckOffService(){
@@ -56,12 +58,22 @@ function ShoppingListCheckOffService(){
     return tobuy_items.length;
   };
 
-  service.sayhello = function(){
+  /*service.sayhello = function(){
     console.log("hello from service !");
-  };
+  };*/
    // Remove item of list to buy
   service.removeItem = function (itemIdex){
+    //var tmp = [];
+    //tmp.push(tobuy_items[itemIdex]);
+    //add to bought list
+    bought_items.push(tobuy_items[itemIdex]);
+    console.log("length bought_items "+ bought_items.length);
+    console.log("name :" + bought_items[itemIdex].name + " quantity : " + bought_items[itemIdex].quantity);
     tobuy_items.splice(itemIdex, 1);
-  }
+  };
+
+  service.getListBought = function(){
+    return bought_items;
+  };
 }
 })();
