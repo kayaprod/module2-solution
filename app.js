@@ -14,14 +14,15 @@ function ToBuyShoppingController(ShoppingListCheckOffService){
     ToBuyController.items = ShoppingListCheckOffService.getItems();
     //ToBuyController.lenght = ShoppingListCheckOffService.mylenght;
     //console.log("items to buy  now " +   ShoppingListCheckOffService.getItems());
-    console.log("items to buy  name : " +   ToBuyController.items[2].name + " items to buy quantity :" + ToBuyController.items[2].quantity);
+   // console.log("items to buy  name : " +   ToBuyController.items[2].name + " items to buy quantity :" + ToBuyController.items[2].quantity);
     //console.log("items to buy ");
     console.log("items lenght " +   ShoppingListCheckOffService.mylenght());
     //ToBuyController.sayhello = ShoppingListCheckOffService.sayhello();
     //remove item from list to buy
     ToBuyController.removeItem = function(itemIndex){
-      console.log("Index passe :" + itemIndex); // Ajout test
-        ShoppingListCheckOffService.removeItem(itemIndex);
+      var item = {name:ToBuyController.items[itemIndex].name, quantity:ToBuyController.items[itemIndex].quantity };
+      console.log("item en cours.. name :" + ToBuyController.items[itemIndex].name + " quantity : " + ToBuyController.items[itemIndex].quantity); // Ajout test
+        ShoppingListCheckOffService.removeItem(itemIndex,item);
     };
 }
 
@@ -31,7 +32,7 @@ function AlreadyBoughtShoppingController(ShoppingListCheckOffService){
     // A faire
     AlreadyBoughtController.items = ShoppingListCheckOffService.getListBought();
   //  console.log("items bought  name : " +   AlreadyBoughtController.items[0].name + " items bought quantity :" + AlreadyBoughtController.items[0].quantity);
-      console.log(" length of AlreadyBoughtController : " + AlreadyBoughtController.items.length);
+  //    console.log(" length of AlreadyBoughtController : " + AlreadyBoughtController.items.length);
 }
  // service
 function ShoppingListCheckOffService(){
@@ -63,13 +64,14 @@ function ShoppingListCheckOffService(){
     console.log("hello from service !");
   };*/
    // Remove item of list to buy
-  service.removeItem = function (itemIdex){
+  service.removeItem = function (itemIdex,item){
     //var tmp = [];
     //tmp.push(tobuy_items[itemIdex]);
     //add to bought list
-    bought_items.push(tobuy_items[itemIdex]);
-    console.log("length bought_items "+ bought_items.length);
-    console.log("name :" + bought_items[itemIdex].name + " quantity : " + bought_items[itemIdex].quantity);
+    //bought_items.push(tobuy_items[itemIdex]); ///test
+    bought_items.push(item);
+    //console.log("length bought_items "+ bought_items.length);
+   // console.log("name :" + bought_items[itemIdex].name + " quantity : " + bought_items[itemIdex].quantity);
     tobuy_items.splice(itemIdex, 1);
   };
 

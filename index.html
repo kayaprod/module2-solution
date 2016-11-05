@@ -35,8 +35,8 @@
      <h2>To Buy:</h2>
      <ul>
        <!--<li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>-->
-       <li ng-repeat="item in ToBuyController.items">Buy {{item.quantity}} {{item.name}} <button ng-click="ToBuyController.removeItem ($index);" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
-       valeur index : {{ToBuyController.$index}}
+       <li ng-repeat="item in ToBuyController.items"> Buy {{item.quantity}} {{item.name}} <button ng-click="ToBuyController.removeItem ($index);" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button>  valeur index : {{$index}}</li>
+      
      </ul>
      <div class="emptyMessage">Everything is bought!</div>
     </div>
