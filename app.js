@@ -20,6 +20,7 @@ function ToBuyShoppingController(ShoppingListCheckOffService){
     //ToBuyController.sayhello = ShoppingListCheckOffService.sayhello();
     //remove item from list to buy
     ToBuyController.removeItem = function(itemIndex){
+      console.log("Index passe :" + itemIndex); // Ajout test
         ShoppingListCheckOffService.removeItem(itemIndex);
     };
 }
