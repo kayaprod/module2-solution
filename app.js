@@ -13,7 +13,7 @@ function ToBuyShoppingController(ShoppingListCheckOffService){
     ToBuyController.items = ShoppingListCheckOffService.getItems();    
     ToBuyController.removeItem = function(itemIndex){
       var item = {name:ToBuyController.items[itemIndex].name, quantity:ToBuyController.items[itemIndex].quantity };
-      console.log("item en cours.. name :" + ToBuyController.items[itemIndex].name + " quantity : " + ToBuyController.items[itemIndex].quantity); // Ajout test
+      //console.log("item en cours.. name :" + ToBuyController.items[itemIndex].name + " quantity : " + ToBuyController.items[itemIndex].quantity); // Ajout test
         ShoppingListCheckOffService.removeItem(itemIndex,item);                
     };
     
